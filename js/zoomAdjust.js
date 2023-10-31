@@ -6,8 +6,9 @@ function getCurrentZoom() {
 
 function adjustSidebarZoom() {
     let zoomLevel = getCurrentZoom();
-    document.querySelector('.sidebar').style.transform = `scale(${1/zoomLevel})`;
+    let sidebar = document.querySelector('.sidebar');
+    sidebar.style.transform = `scale(${1/zoomLevel})`;
+    sidebar.style.transformOrigin = 'top left';
 }
 
-// Initial adjustment when the page loads
 adjustSidebarZoom();
