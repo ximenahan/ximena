@@ -1,0 +1,24 @@
+body {
+    background: #E1E1E1;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 187.5px;
+    background-color: #E8E8E8;
+    overflow-x: hidden;
+    padding-top: 20px;
+    color: #fff;
+    transform-origin: left top; /* ensure that transformation is based on the top-left corner */
+}
+
+
+.content {
+    margin-left: 187.5px;
+    padding: 10px;
+}
