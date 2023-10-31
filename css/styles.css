@@ -14,11 +14,24 @@ body {
     overflow-x: hidden;
     padding-top: 20px;
     color: #fff;
-    transform-origin: left top; /* ensure that transformation is based on the top-left corner */
+    transform-origin: left top;
+    z-index: 2; /* Ensure the sidebar is above other content */
 }
 
+.sidebar::before {
+    content: "";
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 24px;
+    height: 24px;
+    background-image: url('icon/icons8-sidebar-96.png');
+    background-size: cover;
+    cursor: pointer; /* Changes the cursor to a hand when hovering over the icon */
+}
 
 .content {
     margin-left: 187.5px;
     padding: 10px;
+    z-index: 1; /* The main content layer */
 }
