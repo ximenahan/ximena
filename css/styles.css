@@ -1,0 +1,19 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #E1E1E1;
+}
+
+.sidebar {
+    width: 187.5px; /* Adjusted width */
+    height: 100%;
+    background-color: #CCCCCC;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.content {
+    margin-left: 187.5px; /* Adjusted to match the new sidebar width */
+    padding: 20px;
+}
