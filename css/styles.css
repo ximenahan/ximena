@@ -10,7 +10,9 @@ body {
     left: 0;
     height: 720px;
     width: 187.5px;
-    background-color: #E8E8E8;
+    background-image: url('icon/gray_bar.png'); /* Replace 'path_to_your_image.png' with the path to your image */
+    background-size: cover; /* This ensures your image covers the entire sidebar */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
     overflow-x: hidden;
     padding-top: 20px;
     color: #fff;
