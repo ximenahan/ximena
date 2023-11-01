@@ -2,19 +2,18 @@ body {
     background: #E1E1E1;
     margin: 0;
     font-family: Arial, sans-serif;
-    overflow: hidden; /* Prevents scrolling outside the iframe */
+    overflow: hidden;  /* To avoid double scrollbars */
 }
 
 .sidebar {
     position: fixed;
     top: 0;
     left: 0;
-    height: 100vh; /* Takes up the full viewport height */
-    width: 187.5px; /* Fixed width, remains constant on zooming */
+    height: 100vh; /* Takes full viewport height */
+    width: 187.5px;
     background-image: url('icon/gray_bar.png');
     background-size: cover;
     background-repeat: no-repeat;
-    overflow-x: hidden;
     padding-top: 20px;
     color: #fff;
     z-index: 2;
@@ -32,11 +31,12 @@ body {
     cursor: pointer;
 }
 
-iframe {
+.content-frame {
     position: absolute;
     top: 0;
-    left: 187.5px; /* Same as the sidebar's width */
-    width: calc(100vw - 187.5px); /* Remaining viewport width minus sidebar width */
+    left: 187.5px;
+    width: calc(100% - 187.5px);
     height: 100vh;
     border: none;
+    overflow-y: scroll; /* Allow vertical scrolling if needed */
 }
