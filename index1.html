@@ -1,19 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Background Color with Fixed Sidebar</title>
     <link rel="stylesheet" href="css/styles.css">
 </head>
+
 <body>
+    <!-- Fixed sidebar that remains unaffected by zoom -->
     <div class="sidebar">
         <!-- No <img> tag here since the icon will be set as a background image in the CSS -->
         <!-- Sidebar content goes here -->
     </div>
-    <div class="content">
-        <!-- Your main content goes here -->
-    </div>
-    <script src="js/zoomAdjust.js"></script> <!-- Add this line to include the JavaScript file -->
+    <!-- Embed main content inside an iframe, allowing it to zoom independently of the outer interface -->
+    <iframe src="mainContent.html" frameborder="0" class="content-iframe"></iframe>
 </body>
+
 </html>

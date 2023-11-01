@@ -1,24 +1,27 @@
+/* General body styling */
 body {
     background: #E1E1E1;
     margin: 0;
     font-family: Arial, sans-serif;
 }
 
+/* Styling for the fixed sidebar */
 .sidebar {
-    position: fixed;
+    position: fixed; /* Keeps the sidebar fixed on the screen */
     top: 0;
     left: 0;
     height: 720px;
     width: 187.5px;
-    background-image: url('icon/gray_bar.png'); /* Replace 'path_to_your_image.png' with the path to your image */
-    background-size: cover; /* This ensures your image covers the entire sidebar */
-    background-repeat: no-repeat; /* Prevents the image from repeating */
-    overflow-x: hidden;
+    background-image: url('icon/gray_bar.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    overflow-x: hidden; /* Prevents any horizontal scrolling in the sidebar */
     padding-top: 20px;
     color: #fff;
-    z-index: 2;
+    z-index: 2; /* Ensures the sidebar is above other elements */
 }
 
+/* Styling for the icon in the sidebar */
 .sidebar::before {
     content: "";
     position: absolute;
@@ -28,11 +31,23 @@ body {
     height: 24px;
     background-image: url('icon/icons8-sidebar-96.png');
     background-size: cover;
-    cursor: pointer;
+    cursor: pointer; /* Changes the cursor to a hand when hovering over the icon */
 }
 
+/* Styling for the main content outside of the sidebar */
 .content {
-    margin-left: 187.5px;
+    margin-left: 187.5px; /* Creates space for the sidebar */
     padding: 10px;
-    z-index: 1;
+    z-index: 1; /* Places content below the sidebar in stacking order */
+}
+
+/* Styling for the iframe to make it take up the entire viewport, minus the sidebar */
+.content-iframe {
+    position: absolute;
+    top: 0;
+    left: 187.5px;
+    width: calc(100% - 187.5px);
+    height: 100%;
+    border: none; /* Removes the default iframe border */
+    z-index: 0; /* Places iframe below the content and sidebar in stacking order */
 }
