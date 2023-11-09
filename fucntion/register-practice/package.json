@@ -1,0 +1,14 @@
+
+
+{
+  "name": "fullstack-project",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "concurrently \"npm:start-backend\" \"npm:start-frontend\"",
+    "start-backend": "cd backend && npm start",
+    "start-frontend": "cd frontend && npm start"
+  },
+  "devDependencies": {
+    "concurrently": "^5.3.0"
+  }
+}
