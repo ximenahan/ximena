@@ -1,13 +1,13 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import SignupForm from './SignupForm'; // Import the SignupForm component
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        {/* Your existing content */}
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          Welcome to My React App!
         </p>
         <a
           className="App-link"
@@ -17,6 +17,8 @@ function App() {
         >
           Learn React
         </a>
+        {/* Render the SignupForm component */}
+        <SignupForm />
       </header>
     </div>
   );
