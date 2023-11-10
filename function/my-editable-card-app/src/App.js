@@ -21,14 +21,11 @@ function App() {
                 <div
                   ref={provided.innerRef}
                   {...provided.draggableProps}
-                  {...provided.dragHandleProps}
-                  // Added inline style for absolute positioning within the droppable container
-                  style={{
-                    ...provided.draggableProps.style,
-                    position: 'absolute',
-                  }}
                 >
                   <div className="card">
+                    <div {...provided.dragHandleProps} className="card-handle">
+                      Drag me
+                    </div>
                     <div contentEditable="true" className="editable-text"></div>
                   </div>
                 </div>
