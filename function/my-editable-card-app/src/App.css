@@ -1,9 +1,13 @@
-.droppable-container {
-  width: 100vw; /* Full viewport width */
-  height: 100vh; /* Full viewport height */
-  position: relative; /* Allows absolute positioning within */
+/* Style for the card container */
+.app {
+  /* Define the draggable area */
+  position: relative;
+  width: 100%; /* Adjust the width as needed */
+  height: 100vh; /* Adjust the height as needed */
+  overflow: hidden; /* Prevents scrollbars if the card is dragged to the edge */
 }
 
+/* Style for the card */
 .card {
   background-color: #f9f9f9;
   border: 1px solid #ccc;
@@ -11,9 +15,19 @@
   padding: 20px;
   margin: 20px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  width: 250px;
-  resize: both; /* New property to make the card resizable */
-  overflow: auto; /* Required for 'resize' to work */
+  width: 400px; /* Increase the width */
+  height: 150px; /* Increase the height */
+  position: absolute; /* Allows the card to be positioned based on JavaScript */
+  cursor: grab; /* Cursor changes to indicate draggability */
+
+  /* New properties to make the card resizable */
+  /*resize: both; */
+  /*overflow: auto; */
+}
+
+/* Style for the card when being dragged */
+.card:active {
+  cursor: grabbing;
 }
 
 .editable-text {
@@ -21,4 +35,11 @@
   border: none;
   padding: 10px;
   width: calc(100% - 20px); /* Adjusting for padding */
+  color: black; /* Set the color for entered text */
 }
+
+/* Style for the placeholder text */
+.editable-text::placeholder {
+  color:  rgb(212, 212, 212)211, 156, 156); /* Set the color for the placeholder text (gray or any desired color) */
+}
+

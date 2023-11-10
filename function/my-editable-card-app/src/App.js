@@ -1,41 +1,68 @@
-import React from 'react';
-import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
+import React, { useState, useEffect, useRef } from 'react';
 import './App.css';
 
-function App() {
-  // Function to handle the end of a drag event
-  const onDragEnd = (result) => {
-    // You can implement the logic to reorder the list and update the state here
-    // For now, we'll just log the result for demonstration purposes
-    console.log(result);
+function Card() {
+  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [isPlaceholderVisible, setIsPlaceholderVisible] = useState(true); // Track if placeholder should be visible
+  const cardRef = useRef(null);
+
+  const handleTextChange = (event) => {
+    // Check if there's any input value
+    setIsPlaceholderVisible(event.target.textContent === '');
   };
 
+  useEffect(() => {
+    const card = cardRef.current;
+
+    const handleMouseDown = (event) => {
+      const shiftX = event.clientX - card.getBoundingClientRect().left;
+      const shiftY = event.clientY - card.getBoundingClientRect().top;
+
+      const handleMouseMove = (moveEvent) => {
+        setPosition({
+          x: moveEvent.clientX - shiftX,
+          y: moveEvent.clientY - shiftY,
+        });
+      };
+
+      const handleMouseUp = () => {
+        document.removeEventListener('mousemove', handleMouseMove);
+        document.removeEventListener('mouseup', handleMouseUp);
+      };
+
+      document.addEventListener('mousemove', handleMouseMove);
+      document.addEventListener('mouseup', handleMouseUp);
+    };
+
+    card.addEventListener('mousedown', handleMouseDown);
+
+    return () => {
+      card.removeEventListener('mousedown', handleMouseDown);
+    };
+  }, []);
+
   return (
-    <DragDropContext onDragEnd={onDragEnd}>
-      <Droppable droppableId="droppable">
-        {(provided) => (
-          // Added className for styling droppable area
-          <div {...provided.droppableProps} ref={provided.innerRef} className="droppable-container">
-            <Draggable key="1" draggableId="draggable-1" index={0}>
-              {(provided) => (
-                <div
-                  ref={provided.innerRef}
-                  {...provided.draggableProps}
-                >
-                  <div className="card">
-                    <div {...provided.dragHandleProps} className="card-handle">
-                      Drag me
-                    </div>
-                    <div contentEditable="true" className="editable-text"></div>
-                  </div>
-                </div>
-              )}
-            </Draggable>
-            {provided.placeholder}
-          </div>
-        )}
-      </Droppable>
-    </DragDropContext>
+    <div
+      className="card"
+      style={{ left: `${position.x}px`, top: `${position.y}px` }}
+      ref={cardRef}
+    >
+      <div
+        contentEditable="true"
+        className="editable-text"
+        onInput={handleTextChange} // Handle input event to track text changes
+      >
+        {isPlaceholderVisible && <span className="placeholder">type here</span>}
+      </div>
+    </div>
+  );
+}
+
+function App() {
+  return (
+    <div className="App">
+      <Card />
+    </div>
   );
 }
 
